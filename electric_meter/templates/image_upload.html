@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	{% load static %}
+	<title>电表智能识别——上传相片</title>
+    <meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+	<!-- stylesheet css -->
+	<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/css/nivo-lightbox.css">
+	<link rel="stylesheet" href="/static/css/nivo_themes/default/default.css">
+	<link rel="stylesheet" href="/static/css/templatemo-style.css">
+	<link rel="stylesheet" href="/static/css/fileinput.min.css">
+	<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+	<link href="/static/css/theme.css" rel="stylesheet">
+	<!-- google web font css -->
+<!--	<link href='http://fonts.useso.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+	<style>
+        .white_content {
+            display: none;
+            position:fixed;
+            top:15%;
+            left:30%;
+            width:40%;
+            padding: 20px;
+            text-align:center;
+            border: 10px solid grey;
+            background-color: black;
+            z-index:1002;
+            overflow: auto;
+			opacity: 80%;
+        }
+        .white_content h3,h4{
+        	color: #fff;
+        }
+
+    </style>
+
+	{% if messages %}
+	<script>
+        {% for msg in messages %}
+            alert('{{ msg.message }}');
+        {% endfor %}
+    </script>
+{% endif %}
+	<script type="text/javascript">
+        function openDialog(){
+            document.getElementById('light').style.display='block';
+        }
+        function closeDialog(){
+            document.getElementById('light').style.display='none';
+        }
+        openDialog();
+    </script>
+</head>
+<body>
+<div id="light" class="white_content">
+	<button type="button" class="close" aria-hidden="true" style="color:white;" onclick="closeDialog()">
+    &times;
+  	</button>
+	<h3>处理中</h3>
+	<h4 id="info">图像识别中，请耐心等待…………</h4>
+	<img class="img-responsive center-block" src="/static/images/loading.gif" alt="loading">
+</div>
+<!-- navigation -->
+
+
+<!-- contact header section -->
+
+<!-- contact section -->
+<div id="contact">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-offset-2 col-md-8 col-sm-12">
+				<h2><i class="fa fa-search"></i>电表录入</h2>
+				<h3 class="col-md-4 col-sm-4"><i class="fa fa-spinner"></i>上传相片</h3>
+				<h3 class="col-md-4 col-sm-4" style="color:grey;"><i class="fa fa-arrow-right"></i>录入信息</h3>
+				<h3 class="col-md-4 col-sm-4" style="color:grey;"><i class="fa fa-arrow-right"></i>补充信息</h3>
+			</div>
+			<div class="col-md-10 col-md-offset-1 col-sm-12 mt30">
+				<h4>本地文件上传</h4>
+				<form name="pic_upload_form" method="POST" action="pic_upload" enctype="multipart/form-data" onsubmit="openDialog();">
+					{% csrf_token %}
+					<input name="pic" type="file" class="file" id="pic" data-language="zh" data-theme="explorer-fa" required="required" accept="image">
+				</form>
+			</div>
+		</div>
+	</div>
+</div>		
+
+<!-- footer section -->
+<footer>
+	<div class="container">
+		<div class="row">
+        
+			<div class="col-md-5 col-sm-4">
+				<img src="/static/images/logo.png" class="img-responsive" alt="logo">
+				<p>电表智能识别是一款由AIstudio实训平台中的开源模型部署而来的web服务。能够进行简单的电表录入与信息导出
+                </p>
+				<p><i class="fa fa-phone"></i> 13774383668</p>
+				<p><i class="fa fa-envelope-o"></i> boyifan1@126.com</p>
+                <p><i class="fa fa-github"></i> KirigiriSuzumiya</p>
+			</div>
+
+			<div class="col-md-3 col-sm-4">
+				<h3>快捷链接</h3>
+				<p><a href="/index">主页</a></p>
+				<p><a href="/recognition">电表录入</a></p>
+				<p><a href="/info_list">结果导出</a></p>
+				<p><a href="/admin">管理员站点</a></p>
+				<p><a href="https://aistudio.baidu.com/">飞浆AIstudio</a></p>
+			</div>
+
+			<div class="col-md-4 col-sm-4 newsletter">
+				<h3>登陆状态</h3>
+				<p>{{user}} 您好！</p>
+				<div class="input-group">
+					<span  class="btn email"><a href="/logout">登出</a></span>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</footer>
+
+<!-- copyright section -->
+<div class="copyright">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-sm-6">
+				<p>AIstudio 雾切凉宫</p>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<!-- javascript js -->	
+	<script src="/static/js/jquery.js"></script>
+	<script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/nivo-lightbox.min.js"></script>
+	<script src="/static/js/custom.js"></script>
+	<script src="/static/js/fileinput.js"></script>
+	<script src="/static/js/zh.js"></script>
+	<script src="/static/js/theme.js"></script>
+</body>
+</html>
