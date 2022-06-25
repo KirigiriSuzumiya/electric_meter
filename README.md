@@ -1,4 +1,4 @@
-# 【AI达人特训营】电表检测WEB部署方案
+# 电表检测WEB部署方案
 
 前置项目：https://aistudio.baidu.com/aistudio/projectdetail/3429765
 
